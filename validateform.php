@@ -39,6 +39,8 @@
       // Validate the message field
       if (empty($_POST["message"])) {
         $messagerr = "Please explain the issue you have.";
+      } elseif(strlen($_POST["message"]) < 30) {
+        $usernamerr = "Your message must be atleast 3 characters.";
       } else {
         $message = test_input($_POST["message"]);
       }
