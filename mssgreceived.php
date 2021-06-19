@@ -16,12 +16,16 @@
   	</div>
 
   	<div class="formoutput">
-  		<p>Hi <?php echo $username .",<br>"; ?> Thanks for contacting us. We will get back to you through your email, <?php echo $email; ?>, concerning the issue you submitted.</p>
+  		<p>Hi <?php echo $username; ?>,</p>
+		<p>Thanks for contacting us.</p>
+		<p>We will get back to you through your email, <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>, concerning the issue you submitted.</p>
 
   		<h3><?php echo strtoupper($issue); ?></h3>
   		<p><?php echo $message; ?></p>
+		<p><a href=".">New Message</a></p>
 
-  	</div>
+	  </div>
+	  <?php $usernamerr = $emailerr = $issuerr = $messagerr = ""; ?>
 
   </body>
 </html>
