@@ -1,4 +1,4 @@
-<?php require "validateform.php"; ?>
+<?php include "connect.php"; ?>
 
 <!DOCTYPE html>
 <html>

@@ -8,11 +8,11 @@ if( strcasecmp( $_SERVER['REQUEST_METHOD'],"POST" ) === 0 )
 	exit();
 }
 
-if ( !$_SESSION['postdata'] )
+/* if ( !$_SESSION['postdata'] )
 {
 	//header("Location: register.php");
 	//exit();
-}
+} */
 
 if( isset( $_SESSION['postdata'] ) )
 {
@@ -46,27 +46,27 @@ if( isset( $_SESSION['postdata'] ) )
 		<p>Please fill in this form</p>
 		</div>
 		<div class="input">
-			<form method="POST" action="">
+			<form method="POST" action="mssgreceived.php">
 				<label for="username">Name: </label><br>
-				<input type="text" name="username" value="<?php echo $_POST['username']; ?>" />
+				<input type="text" name="username" value="<?php if($username) {echo $_POST['username'];} ?>" />
 				<span class="error">*<br /><?php echo $usernamerr; ?></span><br><br>
 
 				<label for="email">Email: </label><br>
-				<input type="email" name="email" value="<?php echo $_POST['email']; ?>" />
+				<input type="email" name="email" value="<?php if($email) {echo $_POST['email'];} ?>" />
 				<span class="error">*<br /><?php echo $emailerr; ?></span><br><br>
 
 				<label for="issue">Issue: </label><br>
 				<select name="issue">
-					<option value="query" <?php     echo $_POST['issue'] == 'query' ? 'selected ' : ''; ?>>Query</option>
-					<option value="feedback" <?php  echo $_POST['issue'] == 'feedback' ? 'selected ' : ''; ?>>Feedback</option>
-					<option value="complaint" <?php echo $_POST['issue'] == 'complaint' ? 'selected ' : ''; ?>>Complaint</option>
-					<option value="other" <?php     echo $_POST['issue'] == 'other' ? 'selected ' : ''; ?>>Other</option>
+					<option value="query" <?php if($issue) {echo $_POST['issue'] == 'query' ? 'selected ' : '';} ?>>Query</option>
+					<option value="feedback" <?php if($issue) {echo $_POST['issue'] == 'feedback' ? 'selected ' : '';} ?>>Feedback</option>
+					<option value="complaint" <?php if($issue) {echo $_POST['issue'] == 'complaint' ? 'selected ' : '';} ?>>Complaint</option>
+					<option value="other" <?php if($issue) {echo $_POST['issue'] == 'other' ? 'selected ' : '';} ?>>Other</option>
 				</select>
 				<span class="error">*<br /><?php echo $issuerr; ?></span>
 				<br><br>
 
 				<label for="message">Message: </label><br>
-				<textarea name="message" rows="6"><?php echo $_POST['message']; ?></textarea>
+				<textarea name="message" rows="6"><?php if($message) {echo $_POST['message'];} ?></textarea>
 				<span class="error">*<br /><?php echo $messagerr; ?></span>
 				<br><br>
 
