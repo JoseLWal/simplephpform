@@ -62,6 +62,10 @@ h1, h3 {
 	color: red;
 }
 
+.messagestable {
+	width: 100%;
+}
+
 @media screen and (max-width: 770px) {
 	body {
 		padding: 4px 5px;

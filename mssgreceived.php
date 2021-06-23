@@ -1,4 +1,26 @@
-<?php include "connect.php"; ?>
+<?php
+include "connect.php";
+$val_ok = $username && $email && $issue && $message;
+if ($val_ok) {
+	try {
+		// Set Error mode to PDO Exception
+		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		$sql = $conn->prepare("INSERT INTO
+		    contactmssg (username, email, issue, message)
+		    VALUES (:username, :email, :issue, :message)");
+		$sql->bindParam(':username', $username);
+		$sql->bindParam(':email', $email);
+		$sql->bindParam(':issue', $issue);
+		$sql->bindParam(':message', $message);
+		$sql->execute();
+		echo "Form submitted successfully.";
+	} catch(PDOException $e) {
+		echo $e->getMessage();
+	}
+	$conn = null;
+}
+?>
 
 <!DOCTYPE html>
 <html>
